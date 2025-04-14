@@ -1,0 +1,1637 @@
+[
+    {
+        "requests": [
+            {
+                "name": "1_Login",
+                "data": [
+                    {
+                        "endpoint": "login",
+                        "Username": "sdet@gmail.com",
+                        "Password": "March@2025",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "sdetorganizer@gmail.com",
+                        "Password": "wewe@2025",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "sdetorganizer@gmail.com",
+                        "Password": "March@2025",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "abcd.test@gmail.com",
+                        "Password": "March@2025",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "",
+                        "Password": "March@2025",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "sdetorganizer@gmail.com",
+                        "Password": "",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "login",
+                        "Username": "SDETORGANIZER@gmail.com",
+                        "Password": "March@2025",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "2_Add New Program",
+                "data": [
+                    {
+                        "programName": "Postmanpattrolletwohundreetethnabfinaltean-SDoneETTraining",
+                        "programStatus": "active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 201
+                    },
+                    {
+                        "programName": "Postmanpattrollertwohuwenetwbcfinaleleven-SDETTraining",
+                        "programStatus": "active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 201
+                    },
+
+                    {
+                        "programName": "Postmanpattrollerthundrtwenntffinaltwelve-SDETTraining",
+                        "programStatus": "active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 201
+                    },
+
+                    {
+                        "programName": "Postmanpattrollerfive-SDETTraining",
+                        "programStatus": "Active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 400
+                    },
+                    {
+                        "programName": "QA Fundamentals",
+                        "programStatus": "Inactive",
+                        "endpoint": "saveprogram",
+                        "statusCode": 400
+                    },
+                    {
+                        "programName": "Performance10Testing",
+                        "programStatus": "Active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 400
+                    },
+                    {
+                        "programName": "API##Testing Mastery",
+                        "programStatus": "Active",
+                        "endpoint": "saveprogram",
+                        "statusCode": 400
+                    }
+                ]
+            },
+            {
+                "name": "3_All Programs",
+                "data": [
+                    {
+                        "endpoint": "allPrograms",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "allProgram",
+                        "statusCode": 404
+                    }
+                   
+                ]
+            },
+            {
+                "name": "4_All Programs by ProgramId",
+                "data": [
+                    {
+                        "endpoint": "programs/{{Valid_Program_Id}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "progra/{{Valid_Program_Id}}",
+                        "statusCode": 404
+                    },
+{
+                        "endpoint": "programs/{{Invalid_Program_Id}}",
+                        "statusCode": 404
+                    }
+                   
+                ]
+            },
+
+            {
+                "name": "5_All Program with Users",
+                "data": [
+                    {
+                        "endpoint": "allProgramsWithUsers",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "allProgramsW",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "",
+                        "statusCode": 404
+                    }
+                ]
+            },
+            {
+                "name": "8_DeleteProgram by ProgramId",
+                "data": [
+                    {
+                        "endpoint": "deletebyprogid/{{Valid_Program_Id}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "deletebyprogid/{{Invalid_Program_Id}}",
+                        "statusCode": 404
+                    }
+              
+                ]
+            },
+            {
+                "name": "9_DeleteProgram By ProgramName",
+                "data": [
+                    {
+                        "endpoint": "deletebyprogname/{{Valid_programName}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "deletebyprogname/{{Invalid_programName}}",
+                        "statusCode": 404
+                    }
+              
+                ]
+            },
+            {
+                "name": "7_Update Program by ProgramName",
+                "data": [
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "Postmanpattrollertwntthreeonetppupdatethree-SDETTraining",
+                        "programStatus": "Active",
+                        "endpoint": "program/{{Valid_programName}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "NonExistentProgram",
+                        "programStatus": "Active",
+                        "endpoint": "program/{{Valid_programName}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "",
+                        "programStatus": "Active",
+                        "endpoint": "program/{{Valid_programName}",
+                        "statusCode": 400
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "Postmanpattrollertwntthree-SDETTraining",
+                        "programStatus": "Inactive",
+                        "endpoint": "program/{{Valid_programName}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "Postmanpattrollertwntthreeonetwo",
+                        "programStatus": "Active",
+                        "endpoint": "program/{{Invalid_programName}}",
+                        "statusCode": 404
+                    }
+                ]
+            },
+            {
+                "name": "6_Update Program by ProgramId",
+                "data": [
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "{{Valid_programName}}",
+                        "programStatus": "Active",
+                        "endpoint": "putprogram/{{Valid_Program_Id}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "NonExistentProgram",
+                        "programStatus": "Active",
+                        "endpoint": "putprogram/{{Invalid_Program_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "",
+                        "programStatus": "Active",
+                        "endpoint": "putprogram/{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "Postmanpattrollertwntthree-SDETTraining",
+                        "programStatus": "",
+                        "endpoint": "putprogram/{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    },
+                    {
+                        "programDescription": "Updated program description",
+                        "programName": "$$$$$$",
+                        "programStatus": "Active",
+                        "endpoint": "putprogram/{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    }
+                ]
+            },
+            {
+                "name": "10_createBatchname",
+                "data": [
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "teamdatatwentyninefinal",
+                        "batchName": "team10dataapifinalruntwenty",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "teamdatenfinal",
+                        "batchName": "team10dataapifinalruntwentyone",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "teamdataapifinalrunthree",
+                        "batchName": "team10dataapifinhfinaltewentytwo",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "for team 10 api hackathon one",
+                        "batchName": "team10-datadriven1",
+                        "batchNoOfClasses": 0,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "team10datadriven",
+                        "batchName": "",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "team10datadriven",
+                        "batchName": "team10-datadriven1d",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "Active",
+                        "programId": 0,
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "team10datadriven",
+                        "batchName": "team10-datadriven3",
+                        "batchNoOfClasses": 8,
+                        "batchStatus": "",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchDescription": "team10datadriven",
+                        "batchName": "team10datadriventdhrfour",
+                        "batchNoOfClasses": 9,
+                        "batchStatus": "Active",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 400
+                    }
+                ]
+            },
+            {
+                "name": "11_Updatewith ValidBatchid",
+                "data": [
+                    {
+                        "endpoint": "batchess",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "batchName": "team10updatedr",
+                        "batchDescription": "test batch",
+                        "batchStatus": "Active",
+                        "batchNoOfClasses": 11,
+                        "programId": "{{Valid_Program_Id}}",
+                        "programName": "team10update",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchId": 96,
+                        "batchName": "team10upddadatedsa",
+                        "batchDescription": "test batch",
+                        "batchStatus": "Active",
+                        "batchNoOfClasses": 11,
+                        "programId": "{{Valid_Program_Id}}",
+                        "programName": "team10update",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "batchName": "team10apifinalupdatefour",
+                        "batchDescription": "test batch",
+                        "batchStatus": "Active",
+                        "batchNoOfClasses": 12,
+                        "programId": "{{Valid_Program_Id}}",
+                        "programName": "team10update5",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "batches",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "batchName": "team10apifinalupdatethree",
+                        "batchDescription": "test batch",
+                        "batchStatus": "Active",
+                        "batchNoOfClasses": 11,
+                        "programId": "{{Valid_Program_Id}}",
+                        "programName": "team10update",
+                        "statusCode": 404
+                    }
+                ]
+            },
+            {
+                "name": "12_AllBatches",
+                "data": [
+                    {
+                        "endpoint": "batches1",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "13_AllBatchesbybatchid",
+                "data": [
+                    {
+                        "endpoint": "batches/batchId",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    },
+                    {
+                        "endpoint": "batches/baatchId",
+                        "batchId": 9076,
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches/batchId",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "14_AllBatchesBatchname",
+                "data": [
+                    {
+                        "endpoint": "batches/batchNamew",
+                        "batchName": "{{Valid_Batch_Name}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches/batchName",
+                        "batchName": "teateam",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches/batchName",
+                        "batchName": "{{Valid_Batch_Name}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "15_AllBatchesProgramid",
+                "data": [
+                    {
+                        "endpoint": "batches/programm",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches/program",
+                        "programId": 164,
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches/program",
+                        "programId": "{{Valid_Program_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "16_delvalidbatchid",
+                "data": [
+                    {
+                        "endpoint": "batchess",
+                        "id": "{{Valid_Batch_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches",
+                        "id": 96,
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batches",
+                        "id": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    }
+                    
+                ]
+            },
+            {
+                "name": "18_Update User Role Program Batch Status",
+                "data": [
+                    {
+                        "endpoint": "userss/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R03",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Invalid_userId}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R03",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Invalid_Program_Id}}",
+                        "roleId": "R102",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R02",
+                        "batchId": "{{Invalid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R03",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Activeb",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R03",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "19_update User Role Id",
+                "data": [
+                    {
+                        "endpoint": "userrs/roleId/{{Valid_User_Id}}",
+                        "roleId": "R01",
+                        "userRoleStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleId/{{Invalid_userId}}",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/roleId/{{Valid_User_Id}}",
+                        "roleId": "R04",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleId/{{Valid_User_Id}}",
+                        "roleId": "R03",
+                        "userRoleStatus": "Actives",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleId/{{Valid_User_Id}}",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "23_Update User Role Program Batch Status with two batches",
+                "data": [
+                    {
+                        "endpoint": "users/roleProgramBatchStatus/{{Valid_User_Id}}",
+                        "programId": "{{Valid_Program_Id}}",
+                        "roleId": "R02",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus": "Active",
+                        "batchId1": "{{Valid_Batch_Id}}",
+                        "userRoleProgramBatchStatus1": "Active",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "21_update User with multiple roles",
+                "data": [
+                    {
+                        "endpoint": "users/roleId/{{Valid_User_Id}}",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "roleId1": "R02",
+                        "userRoleStatus1": "Active",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "20_update User Login Status",
+                "data": [
+                    {
+                        "endpoint": "userse/userLogin/{{Valid_User_Id}}",
+                        "userLoginEmail": "6oaP6cgjTeD1IPMx20XcE@gmail.com",
+                        "loginStatus": "Active",
+                        "status": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/userLogin/{{Invalid_userId}}",
+                        "userLoginEmail": "6oaP6cgjTeD1IPMx20XcE@gmail.com",
+                        "loginStatus": "Active",
+                        "status": "Active",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/userLogin/{{Valid_User_Id}}",
+                        "userLoginEmail": "6oaP6cgjTeD1IPMx20XcE@gmailcom",
+                        "loginStatus": "Active",
+                        "status": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/userLogin/{{Valid_User_Id}}",
+                        "userLoginEmail": "6oaP6cgjTeD1IPMx20XcE@gmail.com",
+                        "loginStatus": "Actives",
+                        "status": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/userLogin/{{Valid_User_Id}}",
+                        "userLoginEmail": "6oaP6cgjTeD1IPMx20XcE@gmail.com",
+                        "loginStatus": "Active",
+                        "status": "Actives",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/userLogin/{{Valid_User_Id}}",
+                        "userLoginEmail": "6oaP6ucgjhs20XcEsw@gmail.com",
+                        "loginStatus": "Active",
+                        "status": "Active",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "22_update User",
+                "data": [
+                    {
+                        "endpoint": "userss/{{Valid_User_Id}}",
+                        "userFirstName": "ooo",
+                        "userLastName": "iii",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4250000016",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid endpoint",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.cghj@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Invalid_userId}}",
+                        "userFirstName": "xxxxxxffhg",
+                        "userLastName": "lllll",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid userid",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.gchjg@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "rrr!",
+                        "userLastName": "ppp",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid first name",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "ghjk.kjc@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp@",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid second name",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.ramyasand@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "dsfd",
+                        "userLastName": "sdgd",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PSTq",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid timezone",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.ramyasand@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "nnn",
+                        "userLastName": "rtret",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid visa",
+                        "userVisaStatus": "H4-EADr",
+                        "userLoginEmail": "email.ghjgh@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid email",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.fgh@gmailcom",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "ttt",
+                        "userLastName": "nnn",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 4254416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with invalid phone#",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "email.hjx@gmail.com",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "userFirstName": "Ramssdfasfsafya",
+                        "userLastName": "ttSDGs",
+                        "userMiddleName": null,
+                        "userPhoneNumber": "+1 5693729416",
+                        "userLocation": "Washington",
+                        "userTimeZone": "PST",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userEduUg": "BE",
+                        "userEduPg": null,
+                        "userComments": "user with valid details",
+                        "userVisaStatus": "H4-EAD",
+                        "userLoginEmail": "emaiiiiil.rter3@gmail.com",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "17_create User",
+                "data": [
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid first name",
+                        "userEduUg": "BE",
+                        "userFirstName": "@sdg",
+                        "userMiddleName": "kasdfjdh",
+                        "userLastName": "dfgdf",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4254000826",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.dyhdz@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid last name",
+                        "userEduUg": "BE",
+                        "userFirstName": "uuu",
+                        "userMiddleName": "kasdfjdh",
+                        "userLastName": "345dsg",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4254000806",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.ewr@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid timezone",
+                        "userEduUg": "BE",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4250009806",
+                        "userTimeZone": "PSTA",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.qwe@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid visa",
+                        "userEduUg": "BE",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4250009806",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD1",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.erew@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid phone#",
+                        "userEduUg": "BE",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "4250009806",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.ewr@gmail.com",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "user with invalid email",
+                        "userEduUg": "BE",
+                        "userFirstName": "rrr",
+                        "userLastName": "ppp",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4250009806",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "email.ewr@gmailcom",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "Student User",
+                        "userEduUg": "BE",
+                        "userFirstName": "def",
+                        "userLastName": "xyz",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 9219129702",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "12qierfybytig31@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "Student User for class",
+                        "userEduUg": "BE",
+                        "userFirstName": "qwerty",
+                        "userLastName": "sdfsd",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 9951959712",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "120qedtuqeqrqwewedfsdeebytig3@gmail.com",
+                        "roleId": "R03",
+                        "userRoleStatus": "Active",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "Staff User",
+                        "userEduUg": "BE",
+                        "userFirstName": "abc",
+                        "userLastName": "def",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4749647276",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "1234685aqwerbwci3@gmail.com",
+                        "roleId": "R02",
+                        "userRoleStatus": "Active",
+                        "statusCode": 201
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "Staff User duplicate with phone",
+                        "userEduUg": "BE",
+                        "userFirstName": "abdssc",
+                        "userLastName": "desdgdsf",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4254729702",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "asdfsghdb12c4@gmail.com",
+                        "roleId": "R02",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "users/roleStatus",
+                        "userComments": "Staff User duplicate with email",
+                        "userEduUg": "BE",
+                        "userFirstName": "abdssc",
+                        "userLastName": "desdgdsf",
+                        "userMiddleName": "kasdfjdh",
+                        "userLinkedinUrl": "https://www.linkedin.com/feed/?trk",
+                        "userLocation": "Washington",
+                        "userPhoneNumber": "+1 4254624026",
+                        "userTimeZone": "PST",
+                        "userVisaStatus": "H4-EAD",
+                        "userEduPg": "PG",
+                        "loginStatus": "Active",
+                        "userLoginEmail": "123aqwerbci@gmail.com",
+                        "roleId": "R02",
+                        "userRoleStatus": "Active",
+                        "statusCode": 400
+                    }
+                ]
+            },
+            {
+                "name": "35_delete User",
+                "data": [
+                    {
+                        "endpoint": "users/{{Invalid_user_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "users/{{Valid_User_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+ {
+            "name": "24_Get All Users",
+            "data": [
+              {
+                  "endPoint": "user",
+                  "statusCode": 404
+               },
+               {
+                  "endPoint": "users",
+                  "statusCode": 200
+               }
+            ]
+         },
+
+            {
+                "name": "25_Get All Active Users",
+                "data": [
+                    {
+                        "endPoint": "users/activeUser",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/activeUsers",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "26_Get Emails of all users with active status",
+                "data": [
+                    {
+                        "endPoint": "fetchemails",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "fetch-emails",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "27_Get All Roles",
+                "data": [
+                    {
+                        "endPoint": "role",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "roles",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "28_Get User information by UserId",
+                "data": [
+                    {
+                        "endPoint": "users",
+                        "userID": "U5499",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users",
+                        "userID": "U78AB",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users",
+                        "userID": "{{Valid_User_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "29_Get all Users with roles",
+                "data": [
+                    {
+                        "endPoint": "users/role",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/roles",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "30_Gets count of active and inactive users",
+                "data": [
+                    {
+                        "endPoint": "users/byStatuss",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/byStatus",
+                        "statusCode": 200
+                    },
+                    {
+                        "endPoint": "users/byStatus?id=all",
+                        "statusCode": 200
+                    },
+                    {
+                        "endPoint": "users/byStatus?id=R01",
+                        "statusCode": 200
+                    },
+                    {
+                        "endPoint": "users/byStatus?id=R99",
+                        "statusCode": 404
+                    }
+                ]
+            },
+            {
+                "name": "31_Gets User by Program Batches",
+                "data": [
+                    {
+                        "endPoint": "users/programBatches",
+                        "batchID": "2321",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/programBatch",
+                        "batchID": "2321",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/programBatch",
+                        "batchID": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "32_Gets Users for Program",
+                "data": [
+                    {
+                        "endPoint": "users/programss",
+                        "programID": "16213",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/programs",
+                        "programID": "16299",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/programs",
+                        "programID": "{{Valid_Program_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "33_Get Users by roleId",
+                "data": [
+                    {
+                        "endPoint": "users/roless",
+                        "roleID": "R01",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/roles",
+                        "roleID": "R099",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "users/roles",
+                        "roleID": "R01",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "34_Get Users by roleId v2",
+                "data": [
+                    {
+                        "endPoint": "v2/user",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "v2/users",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "36_Create New Class",
+                "data": [
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java111",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": "2",
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java487",
+                        "classStatus": "",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 2,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java3",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "classNo": 1,
+                        "batchId": 1,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java12",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 404
+                    },
+                    {
+                        "classNo": 1,
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classDate": "",
+                        "classTopic": "Java12",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 0,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java3",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 2,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java347",
+                        "classStatus": "Active",
+                        "classStaffId": "",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 2,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java3",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 2,
+                        "classDate": "2025-04-06",
+                        "classTopic": "",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 400
+                    },
+                    {
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 2,
+                        "classDate": "2025-04-06",
+                        "classTopic": "Java197364",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Class",
+                        "classComments": "Team10_Java Class",
+                        "classNotes": "Java Notes",
+                        "classRecordingPath": "classRecordingPath",
+                        "classScheduledDates": "[\"2025-04-06\",\"2025-04-06\"]",
+                        "endpoint": "CreateClassSchedule",
+                        "statusCode": 201
+                    }
+                ]
+            },
+            {
+                "name": "37_Get All Classes",
+                "data": [
+                    {
+                        "endpoint": "allCla",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "allClasses",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "38_Get Classes For A Student",
+                "data": [
+                    {
+                        "endpoint": "upcomingClas",
+                        "studentID": "{{Valid_Student_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "upcomingClasses",
+                        "studentID": "U07@@@",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "upcomingClasses",
+                        "studentID": "{{Valid_Student_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "39_Get Class Recordings By BatchId",
+                "data": [
+                    {
+                        "endpoint": "batchRecordin",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batchRecordings",
+                        "batchId": "9178@",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "batchRecordings",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "40_Get Class Details By ClassId",
+                "data": [
+                    {
+                        "endpoint": "classss{{Valid_Class_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "class/{{Invalid_Class_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "class/{{Valid_Class_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "41_Get Classes By Topic",
+                "data": [
+                    {
+                        "endpoint": "classss/{{Valid_Class_Topic}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classes/{{Invalid_Class_Topic}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classes/{{Valid_Class_Topic}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "42_Get Classes By BatchId",
+                "data": [
+                    {
+                        "endpoint": "classesbyBa",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classesbyBatch",
+                        "batchId": "R03@@@",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classesbyBatch",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "43_Get Classes By StaffId",
+                "data": [
+                    {
+                        "endpoint": "classesBySta",
+                        "staffId": "{{Valid_Staff_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classesByStaff",
+                        "staffId": "U07@",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classesByStaff",
+                        "staffId": "{{Valid_Staff_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "44_Get All Class Recordings",
+                "data": [
+                    {
+                        "endpoint": "allCla",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "classrecordings",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "45_Get Class Recordings By ClassId",
+                "data": [
+                    {
+                        "endPoint": "cRecordings/{{Valid_Class_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "classRecordings/{{Invalid_Class_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endPoint": "classRecordings/{{Valid_Class_Id}}",
+                        "classId": "59",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "46_Update Class",
+                "data": [
+                    {
+                        "endpoint": "updateClass/{{Invalid_Class_Id}}",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": "Advanced Java1",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": "[\"2025-09-06\"]",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "updateClass/{{Valid_Class_Id}}",
+                        "batchId": 0,
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": "Advanced Java",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": "[\"2025-09-06\"]",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "updateClass/{{Valid_Class_Id}}",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": null,
+                        "classStatus": "Active",
+                        "classStaffId": "U34#",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": "[\"2025-09-06\"]",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "updateClass/{{Valid_Class_Id}}",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": "Advanced Java",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": null,
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "updateClass/{{Valid_Class_Id}}",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": null,
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": "[\"2025-09-06\"]",
+                        "statusCode": 400
+                    },
+                    {
+                        "endpoint": "updateClass/{{Valid_Class_Id}}",
+                        "batchId": "{{Valid_Batch_Id}}",
+                        "classNo": 1,
+                        "classDate": "2025-03-06T19:04:41.220Z",
+                        "classTopic": "Advanced Java11hb1",
+                        "classStatus": "Active",
+                        "classStaffId": "{{Valid_Staff_Id}}",
+                        "classDescription": "Java Streams and Lambdas",
+                        "classComments": "Focus on hands-on examples",
+                        "classNotes": "Refer to Java Docs",
+                        "classRecordingPath": "",
+                        "classScheduledDates": "[\"2025-09-06\"]",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "47_Update Class Recording",
+                "data": [
+                    {
+                        "endpoint": "updateClassrecording/{{Invalid_Class_Id}}",
+                        "classRecordingPath": "https://recordings.example.com/java-streams.mp4",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "updateClassrecording/{{Valid_Class_Id}}",
+                        "classRecordingPath": "https://recordings.example.com/java-streams.mp4",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {
+                "name": "48_Delete Class",
+                "data": [
+                    {
+                        "endpoint": "deleteByClass/{{Invalid_Class_Id}}",
+                        "statusCode": 404
+                    },
+                    {
+                        "endpoint": "deleteByClass/{{Valid_Class_Id}}",
+                        "statusCode": 200
+                    }
+                ]
+            },
+            {}
+        ]
+    }
+]
