@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report - Postman Collection Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Add Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <!-- Add Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                API Test Analyzer
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1>API Testing Analysis Report</h1>
+                    <p class="timestamp">Generated on {{ report.timestamp }}</p>
+                    <p><strong>Collection:</strong> {{ report.collection_info.name }}</p>
+                    {% if report.environment_info %}
+                    <p><strong>Environment:</strong> {{ report.environment_info.name }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="report-summary">
+                    <div class="summary-card">
+                        <h3>Overall Score</h3>
+                        <div class="value 
+                            {% if report.overall_score >= 80 %}score-high
+                            {% elif report.overall_score >= 60 %}score-medium
+                            {% else %}score-low{% endif %}">
+                            {{ report.overall_score }}%
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Test Coverage</h3>
+                        <div class="value">{{ report.test_coverage.overall }}%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Endpoints</h3>
+                        <div class="value">{{ report.endpoint_count }}</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Recommendations</h3>
+                        <div class="value">{{ report.recommendations|length }}</div>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="overview-tab">Overview</button>
+                        <button class="tab-button" data-tab="endpoints-tab">Endpoints</button>
+                        <button class="tab-button" data-tab="test-analysis-tab">Test Analysis</button>
+                        <button class="tab-button" data-tab="recommendations-tab">Recommendations</button>
+                        {% if report.environment_info %}
+                        <button class="tab-button" data-tab="environment-tab">Environment</button>
+                        {% endif %}
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div id="overview-tab" class="tab-content">
+                        <div class="charts-container">
+                            <div class="chart-card">
+                                <h3>Overall Score</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="score-chart" data-score="{{ report.overall_score }}"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h3>Test Coverage by Type</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="coverage-chart" data-coverage='{{ report.test_coverage.by_type|tojson }}'></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-stats">
+                            <h3>Collection Overview</h3>
+                            <table class="data-table">
+                                <tr>
+                                    <th>Collection Name</th>
+                                    <td>{{ report.collection_info.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Version</th>
+                                    <td>{{ report.collection_info.version }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Schema</th>
+                                    <td>{{ report.collection_info.schema }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Folders</th>
+                                    <td>{{ report.folder_count }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Requests</th>
+                                    <td>{{ report.request_count }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Tests</th>
+                                    <td>{{ report.test_count }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tests Per Request (Avg)</th>
+                                    <td>{{ report.tests_per_request }}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="top-issues">
+                            <h3>Top Issues to Address</h3>
+                            <ul class="recommendations-list">
+                                {% for rec in report.recommendations[:3] %}
+                                <li class="recommendation-item {{ rec.severity }}">
+                                    <h4>{{ rec.title }}</h4>
+                                    <p>{{ rec.description }}</p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="text-center">
+                                <button class="tab-button btn-outline" onclick="document.querySelector('[data-tab=recommendations-tab]').click()">
+                                    View All Recommendations
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Endpoints Tab -->
+                    <div id="endpoints-tab" class="tab-content">
+                        <div class="chart-card full-width">
+                            <h3>Endpoint Quality Scores</h3>
+                            <div class="chart-wrapper" style="height: 400px;">
+                                <canvas id="endpoint-chart" data-scores='{{ report.endpoint_scores|tojson }}'></canvas>
+                            </div>
+                        </div>
+
+                        <h3>Endpoint Details</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Endpoint</th>
+                                    <th>HTTP Method</th>
+                                    <th>Tests</th>
+                                    <th>Coverage</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for endpoint in report.endpoints %}
+                                <tr>
+                                    <td>{{ endpoint.url }}</td>
+                                    <td>{{ endpoint.method }}</td>
+                                    <td>{{ endpoint.test_count }}</td>
+                                    <td>{{ endpoint.coverage }}%</td>
+                                    <td>
+                                        <span class="score-indicator 
+                                            {% if endpoint.score >= 80 %}score-high
+                                            {% elif endpoint.score >= 60 %}score-medium
+                                            {% else %}score-low{% endif %}">
+                                            {{ endpoint.score }}%
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Test Analysis Tab -->
+                    <div id="test-analysis-tab" class="tab-content">
+                        <div class="test-coverage-summary">
+                            <h3>Test Coverage Summary</h3>
+                            <table class="data-table">
+                                <tr>
+                                    <th>Overall Coverage</th>
+                                    <td>
+                                        <span class="score-indicator 
+                                            {% if report.test_coverage.overall >= 80 %}score-high
+                                            {% elif report.test_coverage.overall >= 60 %}score-medium
+                                            {% else %}score-low{% endif %}">
+                                            {{ report.test_coverage.overall }}%
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% for test_type, coverage in report.test_coverage.by_type.items() %}
+                                <tr>
+                                    <th>{{ test_type|replace('_', ' ')|title }} Tests</th>
+                                    <td>
+                                        <span class="score-indicator 
+                                            {% if coverage >= 80 %}score-high
+                                            {% elif coverage >= 60 %}score-medium
+                                            {% else %}score-low{% endif %}">
+                                            {{ coverage }}%
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                        <div class="test-types">
+                            <h3>Test Types Analysis</h3>
+                            <div class="accordion">
+                                {% for test_type, details in report.test_types.items() %}
+                                <div class="collapsible-section">
+                                    <div class="collapsible-header">{{ test_type|replace('_', ' ')|title }} Tests</div>
+                                    <div class="collapsible-content">
+                                        <div class="collapsible-content-inner">
+                                            <p><strong>Coverage:</strong> {{ details.coverage }}%</p>
+                                            <p><strong>Count:</strong> {{ details.count }}</p>
+                                            <p><strong>Description:</strong> {{ details.description }}</p>
+                                            
+                                            {% if details.examples %}
+                                            <h4>Examples Found:</h4>
+                                            <ul>
+                                                {% for example in details.examples %}
+                                                <li><code>{{ example }}</code></li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                            
+                                            {% if details.missing_for %}
+                                            <h4>Missing For:</h4>
+                                            <ul>
+                                                {% for endpoint in details.missing_for %}
+                                                <li>{{ endpoint }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="test-scripts">
+                            <h3>Test Scripts Analysis</h3>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Script Quality</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Average Script Complexity</td>
+                                        <td>{{ report.script_analysis.avg_complexity }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tests Using Dynamic Data</td>
+                                        <td>{{ report.script_analysis.dynamic_data_usage }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tests With Variables</td>
+                                        <td>{{ report.script_analysis.variable_usage }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Error Handling Tests</td>
+                                        <td>{{ report.script_analysis.error_handling }}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations Tab -->
+                    <div id="recommendations-tab" class="tab-content">
+                        <h3>Improvement Recommendations</h3>
+                        <div class="recommendations-list">
+                            {% for rec in report.recommendations %}
+                            <div class="recommendation-item {{ rec.severity }}">
+                                <h4>{{ rec.title }}</h4>
+                                <p>{{ rec.description }}</p>
+                                {% if rec.example %}
+                                <div class="recommendation-example">
+                                    <h5>Example:</h5>
+                                    <pre><code>{{ rec.example }}</code></pre>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Environment Tab (if available) -->
+                    {% if report.environment_info %}
+                    <div id="environment-tab" class="tab-content">
+                        <div class="environment-summary">
+                            <h3>Environment Overview</h3>
+                            <table class="data-table">
+                                <tr>
+                                    <th>Environment Name</th>
+                                    <td>{{ report.environment_info.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Variable Count</th>
+                                    <td>{{ report.environment_info.variable_count }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Environment Quality</th>
+                                    <td>
+                                        <span class="score-indicator 
+                                            {% if report.environment_info.quality_score >= 80 %}score-high
+                                            {% elif report.environment_info.quality_score >= 60 %}score-medium
+                                            {% else %}score-low{% endif %}">
+                                            {{ report.environment_info.quality_score }}%
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="environment-analysis">
+                            <h3>Environment Analysis</h3>
+                            <div class="accordion">
+                                <div class="collapsible-section">
+                                    <div class="collapsible-header">Variable Analysis</div>
+                                    <div class="collapsible-content">
+                                        <div class="collapsible-content-inner">
+                                            <table class="data-table">
+                                                <tr>
+                                                    <th>Variables With Initial Value</th>
+                                                    <td>{{ report.environment_analysis.variables_with_initial_value }}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Variables With Current Value</th>
+                                                    <td>{{ report.environment_analysis.variables_with_current_value }}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Variables Used in Collection</th>
+                                                    <td>{{ report.environment_analysis.variables_used_in_collection }}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Naming Convention Quality</th>
+                                                    <td>{{ report.environment_analysis.naming_convention_quality }}%</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="collapsible-section">
+                                    <div class="collapsible-header">Environment Recommendations</div>
+                                    <div class="collapsible-content">
+                                        <div class="collapsible-content-inner">
+                                            <ul class="recommendations-list">
+                                                {% for rec in report.environment_recommendations %}
+                                                <li class="recommendation-item {{ rec.severity }}">
+                                                    <h4>{{ rec.title }}</h4>
+                                                    <p>{{ rec.description }}</p>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="export-section">
+                    <h3>Export Report</h3>
+                    <div class="export-buttons">
+                        <button class="btn export-button" data-format="json">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code" style="margin-right: 8px;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            JSON
+                        </button>
+                        <button class="btn export-button" data-format="pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            PDF
+                        </button>
+                        <button class="btn export-button" data-format="excel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid" style="margin-right: 8px;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 API Test Analyzer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Initialize Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
